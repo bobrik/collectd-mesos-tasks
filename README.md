@@ -1,0 +1,54 @@
+# Collect task resource usage in mesos
+
+This is collectd plugin and docker image to collect resource usage
+from mesos tasks. Resource usage collected from mesos slaves and sent
+to graphite installation.
+
+Yu have to add `collectd_app` label with the application name to your tasks
+to make it visible in graphite. Marathon 0.8.0+ and mesos 0.22+ support that.
+
+Also make sure to check out docker image to collect metrics from masters
+and slaves: [collectd-mesos](https://github.com/bobrik/docker-collectd-mesos).
+
+## Reported metrics
+
+Metric names look line this:
+
+```
+collectd.<host>.mesos-tasks.<app>.<task>.<type>.<metric>
+```
+
+Gauges:
+
+* `cpus_limit`
+* `cpus_system_time_secs`
+* `cpus_user_time_secs`
+* `mem_limit_bytes`
+* `mem_rss_bytes`
+
+## Running
+
+Minimal command:
+
+```
+docker run -d -e GRAPHITE_HOST=<graphite host> -e MESOS_HOST=<mesos host> \
+    bobrik/collectd-mesos-tasks
+```
+
+### Environment variables
+
+* `COLLECTD_HOST` - host to use in metric name, defaults to the value of `MESOS_HOST`.
+* `COLLECTD_INTERVAL` - metric update interval in seconds, defaults to `10`.
+* `GRAPHITE_HOST` - host where carbon is listening for data.
+* `GRAPHITE_PORT` - port where carbon is listening for data, `2003` by default.
+* `GRAPHITE_PREFIX` - prefix for metrics in graphite, `collectd.` by default.
+* `MESOS_HOST` - mesos slave host to monitor.
+* `MESOS_PORT` - mesos slave port number, defaults to `5051`.
+
+Note that this docker image is very minimal and libc inside does not
+support `search` directive in `/etc/resolv.conf`. You have to supply
+full hostname in `MESOS_HOST` that can be resolved with nameserver.
+
+## License
+
+MIT
