@@ -1,0 +1,417 @@
+{
+  "id": 2,
+  "title": "Mesos tasks",
+  "originalTitle": "Mesos tasks",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {
+            "limit": "#E24D42"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "limit",
+              "linewidth": 3
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.cpus_limit), 'limit')"
+            },
+            {
+              "hide": false,
+              "target": "aliasByNode(scaleToSeconds(sumSeriesWithWildcards(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_{user,system}_time_secs), 1, 6), 1), 4)"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU usage per task",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {
+            "limit": "#E24D42",
+            "system": "#E24D42",
+            "user": "#508642"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 4,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "target": "alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_system_time_secs), 1), 1, 4), 'system')"
+            },
+            {
+              "hide": false,
+              "target": "alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_user_time_secs), 1), 1, 4), 'user')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU usage by type",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "350px",
+      "panels": [
+        {
+          "aliasColors": {
+            "limit": "#E24D42"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "limit",
+              "linewidth": 3
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "target": "alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.mem_limit_bytes), 'limit')"
+            },
+            {
+              "target": "aliasByNode(collectd.*.mesos-tasks.$app.$task.gauge.mem_rss_bytes, 4)"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory usage by task",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": 100,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "leftYAxisLabel": "",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {}
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": true,
+              "target": "alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.mem_limit_bytes), 'limit')"
+            },
+            {
+              "target": "aliasByNode(asPercent(collectd.*.mesos-tasks.$app.$task.gauge.mem_rss_bytes, #A), 4)"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory usage percent by task",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "percent",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row"
+    }
+  ],
+  "nav": [
+    {
+      "collapse": false,
+      "enable": true,
+      "notice": false,
+      "now": true,
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "type": "timepicker"
+    }
+  ],
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "query",
+        "datasource": null,
+        "refresh_on_load": false,
+        "name": "app",
+        "options": [
+          {
+            "text": "whatever-balancer",
+            "value": "whatever-balancer"
+          },
+          {
+            "text": "whatever_app",
+            "value": "whatever_app"
+          }
+        ],
+        "includeAll": false,
+        "allFormat": "glob",
+        "query": "collectd.*.mesos-tasks.*",
+        "current": {
+          "text": "whatever_app",
+          "value": "whatever_app"
+        }
+      },
+      {
+        "type": "query",
+        "datasource": null,
+        "refresh_on_load": false,
+        "name": "task",
+        "options": [
+          {
+            "text": "All",
+            "value": "*"
+          },
+          {
+            "text": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e"
+          }
+        ],
+        "includeAll": true,
+        "allFormat": "wildcard",
+        "query": "collectd.*.mesos-tasks.$app.*",
+        "current": {
+          "text": "All",
+          "value": "*"
+        }
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 6,
+  "version": 3
+}

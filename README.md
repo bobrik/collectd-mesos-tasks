@@ -26,6 +26,71 @@ Gauges:
 * `mem_limit_bytes`
 * `mem_rss_bytes`
 
+## Grafana dashboard
+
+Grafana 2 [dashboard](grafana2.json) is included, you can change mesos apps
+and switch to individual tasks to see resource usage.
+
+![screenshot](screenshot.png)
+
+Graphite metrics extracted from the dashboard:
+
+### CPU usage per task
+
+* Limit
+
+```
+alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.cpus_limit), 'limit')
+```
+
+* Per task usage
+
+```
+aliasByNode(scaleToSeconds(sumSeriesWithWildcards(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_{user,system}_time_secs), 1, 6), 1), 4)
+```
+
+### CPU usage by type
+
+* System
+
+```
+alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_system_time_secs), 1), 1, 4), 'system')
+```
+
+* User
+
+```
+alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_user_time_secs), 1), 1, 4), 'user')
+```
+
+### Memory usage by task
+
+* Limit
+
+```
+alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.mem_limit_bytes), 'limit')
+```
+
+* Per task usage in bytes
+
+```
+aliasByNode(collectd.*.mesos-tasks.$app.$task.gauge.mem_rss_bytes, 4)
+```
+
+### Memory usage percent by task
+
+* Limit (hidden)
+
+```
+alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.mem_limit_bytes), 'limit')
+```
+
+* Per task usage percent
+
+```
+aliasByNode(asPercent(collectd.*.mesos-tasks.$app.$task.gauge.mem_rss_bytes, #A), 4)
+```
+
 ## Running
 
 Minimal command:
