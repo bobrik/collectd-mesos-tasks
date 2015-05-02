@@ -1,5 +1,5 @@
 {
-  "id": 2,
+  "id": null,
   "title": "Mesos tasks",
   "originalTitle": "Mesos tasks",
   "tags": [],
@@ -69,7 +69,7 @@
             },
             {
               "hide": false,
-              "target": "aliasByNode(scaleToSeconds(sumSeriesWithWildcards(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_{user,system}_time_secs), 1, 6), 1), 4)"
+              "target": "aliasByNode(scaleToSeconds(sumSeriesWithWildcards(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_{user,system}_time_secs), 1, 6), 1), 3)"
             }
           ],
           "timeFrom": null,
@@ -227,7 +227,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Memory usage by task",
+          "title": "Memory usage per task",
           "tooltip": {
             "shared": true,
             "value_type": "cumulative"
@@ -297,7 +297,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Memory usage percent by task",
+          "title": "Memory usage percent per task",
           "tooltip": {
             "shared": true,
             "value_type": "cumulative"
@@ -372,8 +372,8 @@
         "allFormat": "glob",
         "query": "collectd.*.mesos-tasks.*",
         "current": {
-          "text": "whatever_app",
-          "value": "whatever_app"
+          "text": "chronos",
+          "value": "chronos"
         }
       },
       {
@@ -387,16 +387,8 @@
             "value": "*"
           },
           {
-            "text": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e",
-            "value": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e"
-          },
-          {
-            "text": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e",
-            "value": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e"
-          },
-          {
-            "text": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e",
-            "value": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e"
+            "text": "chronos_dd264ac4-f0f7-11e4-a440-820de4d817aa",
+            "value": "chronos_dd264ac4-f0f7-11e4-a440-820de4d817aa"
           }
         ],
         "includeAll": true,

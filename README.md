@@ -35,13 +35,13 @@ and switch to individual tasks to see resource usage.
 
 Graphite metrics extracted from the dashboard:
 
-### CPU usage per task
+* CPU usage per task
 
-* Limit
+  * Limit
 
-```
-alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.cpus_limit), 'limit')
-```
+    ```
+    alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.cpus_limit), 'limit')
+    ```
 
 * Per task usage
 
@@ -63,7 +63,7 @@ alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$a
 alias(sumSeriesWithWildcards(scaleToSeconds(derivative(collectd.*.mesos-tasks.$app.$task.gauge.cpus_user_time_secs), 1), 1, 4), 'user')
 ```
 
-### Memory usage by task
+### Memory usage per task
 
 * Limit
 
@@ -77,7 +77,7 @@ alias(averageSeries(collectd.*.mesos-tasks.$app.$task.gauge.mem_limit_bytes), 'l
 aliasByNode(collectd.*.mesos-tasks.$app.$task.gauge.mem_rss_bytes, 4)
 ```
 
-### Memory usage percent by task
+### Memory usage percent per task
 
 * Limit (hidden)
 
