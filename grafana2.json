@@ -1,5 +1,5 @@
 {
-  "id": null,
+  "id": 2,
   "title": "Mesos tasks",
   "originalTitle": "Mesos tasks",
   "tags": [],
@@ -12,7 +12,7 @@
     {
       "collapse": false,
       "editable": true,
-      "height": "250px",
+      "height": "350px",
       "panels": [
         {
           "aliasColors": {
@@ -40,6 +40,7 @@
             "alignAsTable": true,
             "avg": false,
             "current": true,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
@@ -49,7 +50,7 @@
           "lines": true,
           "linewidth": 2,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -115,6 +116,7 @@
             "alignAsTable": true,
             "avg": false,
             "current": true,
+            "hideEmpty": false,
             "max": false,
             "min": false,
             "show": true,
@@ -192,7 +194,7 @@
             "alignAsTable": true,
             "avg": false,
             "current": true,
-            "hideEmpty": false,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
@@ -202,7 +204,7 @@
           "lines": true,
           "linewidth": 2,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -265,7 +267,7 @@
             "alignAsTable": true,
             "avg": false,
             "current": true,
-            "hideEmpty": false,
+            "hideEmpty": true,
             "max": false,
             "min": false,
             "show": true,
@@ -275,7 +277,7 @@
           "lines": true,
           "linewidth": 2,
           "links": [],
-          "nullPointMode": "connected",
+          "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -354,9 +356,13 @@
   "templating": {
     "list": [
       {
-        "type": "query",
+        "allFormat": "glob",
+        "current": {
+          "text": "whatever_app",
+          "value": "whatever_app"
+        },
         "datasource": null,
-        "refresh_on_load": false,
+        "includeAll": false,
         "name": "app",
         "options": [
           {
@@ -368,18 +374,19 @@
             "value": "whatever_app"
           }
         ],
-        "includeAll": false,
-        "allFormat": "glob",
         "query": "collectd.*.mesos-tasks.*",
-        "current": {
-          "text": "chronos",
-          "value": "chronos"
-        }
+        "refresh_on_load": false,
+        "type": "query",
+        "refresh": true
       },
       {
-        "type": "query",
+        "allFormat": "wildcard",
+        "current": {
+          "text": "All",
+          "value": "*"
+        },
         "datasource": null,
-        "refresh_on_load": false,
+        "includeAll": true,
         "name": "task",
         "options": [
           {
@@ -387,17 +394,46 @@
             "value": "*"
           },
           {
-            "text": "chronos_dd264ac4-f0f7-11e4-a440-820de4d817aa",
-            "value": "chronos_dd264ac4-f0f7-11e4-a440-820de4d817aa"
+            "text": "whatever_app_v1_0de28683-f242-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_0de28683-f242-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_0f13da94-f242-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_0f13da94-f242-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_1045a3d5-f242-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_1045a3d5-f242-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_44782a7c-f0b5-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_4b99e14e-f0b5-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_4f2f641f-f0b5-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_a3d84400-f17e-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_a3d84400-f17e-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_a5a2a3c1-f17e-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_a5a2a3c1-f17e-11e4-bc23-3a45554b5e"
+          },
+          {
+            "text": "whatever_app_v1_a804fdc2-f17e-11e4-bc23-3a45554b5e",
+            "value": "whatever_app_v1_a804fdc2-f17e-11e4-bc23-3a45554b5e"
           }
         ],
-        "includeAll": true,
-        "allFormat": "wildcard",
         "query": "collectd.*.mesos-tasks.$app.*",
-        "current": {
-          "text": "All",
-          "value": "*"
-        }
+        "refresh_on_load": false,
+        "type": "query",
+        "refresh": true
       }
     ]
   },
@@ -405,5 +441,5 @@
     "list": []
   },
   "schemaVersion": 6,
-  "version": 3
+  "version": 9
 }
