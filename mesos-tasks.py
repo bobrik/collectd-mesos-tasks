@@ -6,13 +6,13 @@ import urllib2
 
 CONFIGS = []
 
-METRICS = [
-    "cpus_limit",
-    "cpus_system_time_secs",
-    "cpus_user_time_secs",
-    "mem_limit_bytes",
-    "mem_rss_bytes"
-]
+METRICS = {
+    "cpus_limit": 1000,
+    "cpus_system_time_secs": 1000,
+    "cpus_user_time_secs": 1000,
+    "mem_limit_bytes": 1,
+    "mem_rss_bytes": 1
+}
 
 def configure_callback(conf):
     """Receive configuration"""
@@ -86,7 +86,7 @@ def read_stats(conf):
         app = info["labels"]["collectd_app"].replace(".", "_")
         instance = task["source"].replace(".", "_")
 
-        for metric in METRICS:
+        for metric, multiplier in METRICS.iteritems():
             if metric not in task["statistics"]:
                 continue
 
@@ -94,7 +94,7 @@ def read_stats(conf):
             val.type = "gauge"
             val.plugin_instance = app + "." + instance
             val.type_instance = metric
-            val.values = [task["statistics"][metric]]
+            val.values = [int(task["statistics"][metric] * multiplier)]
             val.dispatch()
 
 def read_callback():
