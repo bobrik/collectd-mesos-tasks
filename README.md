@@ -10,6 +10,14 @@ to make it visible in graphite. Marathon 0.8.0+ and mesos 0.22+ support that.
 Also make sure to check out docker image to collect metrics from masters
 and slaves: [collectd-mesos](https://github.com/bobrik/docker-collectd-mesos).
 
+## Caveats
+
+Mesos has an [open issue](https://issues.apache.org/jira/browse/MESOS-2713)
+about incorrect CPU metrics. If you run programs that fork and die
+from time to time, you would probably run into this issue. Check out
+[collectd-docker](https://github.com/bobrik/collectd-docker) if you run
+docker containers, it produces accurate and detailed metrics.
+
 ## Reported metrics
 
 Metric names look line this:
