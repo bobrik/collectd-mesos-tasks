@@ -4,7 +4,7 @@ This is collectd plugin and docker image to collect resource usage
 from mesos tasks. Resource usage collected from mesos slaves and sent
 to graphite installation.
 
-Yu have to add `collectd_app` label with the application name to your tasks
+You have to add `collectd_app` label with the application name to your tasks
 to make it visible in graphite. Marathon 0.8.0+ and mesos 0.22+ support that.
 
 Also make sure to check out docker image to collect metrics from masters
@@ -20,7 +20,7 @@ docker containers, it produces accurate and detailed metrics.
 
 ## Reported metrics
 
-Metric names look line this:
+Metric names look like this:
 
 ```
 collectd.<host>.mesos-tasks.<app>.<task>.<type>.<metric>
